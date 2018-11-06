@@ -4,11 +4,12 @@ import java.text.MessageFormat;
 
 public class Elevator {
 	private int ID;
-	private int currentFloor = 1;
+	private int currentFloor;
 	private int direction;
 	private boolean status;
 	private boolean occupied;
 	//private int insideOrder;
+	private int numOfFloor;
 
 	static int DIRECTION_STAY = 2;
 	static int DIRECTION_UP = 1;
@@ -20,10 +21,12 @@ public class Elevator {
 	static int INSIDE = 1;
 	static int OUTSIDE = 0;
 
-	public Elevator(int ID) {
+	public Elevator(int ID, int numOfFloor) {
+		currentFloor = 1;
 		this.ID = ID;
 		direction = DIRECTION_STAY;
 		status = false;
+		this.numOfFloor = numOfFloor;
 		occupied = UNOCCUPIED;
 	}
 
@@ -46,10 +49,22 @@ public class Elevator {
 	}
 
 	public void setInsideOrder(int floor) {
+		occupied = OCCUPIED;
 		order(floor, INSIDE);
+		occupied = UNOCCUPIED;
 	}
 
 	public void setOutsideOrder(int floor) {
+		occupied = OCCUPIED;
 		order(floor, OUTSIDE);
+		occupied = UNOCCUPIED;
+	}
+
+	public boolean isOccupied() {
+		return occupied;
+	}
+
+	public int getCurrentFloor() {
+		return currentFloor;
 	}
 }
