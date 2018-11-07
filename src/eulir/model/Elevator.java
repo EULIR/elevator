@@ -32,17 +32,17 @@ public class Elevator {
 
 	private void order(int floor, int orderDirection) {
 		if (floor > currentFloor) {
-			System.out.println(MessageFormat.format("The elevator{0} has gone upstair from {1} floor to {2} floor by an {3}", this.ID, currentFloor, floor, orderDirection == 1 ? "inside call" : "outside call"));
+			System.out.println(MessageFormat.format("The elevator {0} has gone upstair from {1} floor to {2} floor by an {3}", this.ID, currentFloor, floor, orderDirection == 1 ? "inside call" : "outside call"));
 			direction = DIRECTION_UP;
 			status = false;
 			currentFloor = floor;
 		} else if (floor < currentFloor) {
-			System.out.println(MessageFormat.format("The elevator{0} has gone downstair from {1} floor to {2} floor by an {3}", this.ID, currentFloor, floor, orderDirection == 1 ? "inside call" : "outside call"));
+			System.out.println(MessageFormat.format("The elevator {0} has gone downstair from {1} floor to {2} floor by an {3}", this.ID, currentFloor, floor, orderDirection == 1 ? "inside call" : "outside call"));
 			direction = DIRECTION_DOWN;
 			status = false;
 			currentFloor = floor;
 		} else {
-			System.out.println(MessageFormat.format("The elevator{0} has been held at {1} floor by an {2}", this.ID, currentFloor, orderDirection == 1 ? "inside call" : "outside call"));
+			System.out.println(MessageFormat.format("The elevator {0} has been held at {1} floor by an {2}", this.ID, currentFloor, orderDirection == 1 ? "inside call" : "outside call"));
 			direction = DIRECTION_STAY;
 			status = true;
 		}
@@ -66,5 +66,9 @@ public class Elevator {
 
 	public int getCurrentFloor() {
 		return currentFloor;
+	}
+
+	public int getID() {
+		return this.ID;
 	}
 }

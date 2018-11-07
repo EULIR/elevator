@@ -1,8 +1,10 @@
 package eulir.model;
 
+import eulir.algorithm.NearestElevatorSolution;
+
 public class Algorithm {
 	//TODO: different algorithms to implement best elevator choices
-	public static int chooseElevator(int[] elevatorStatus, int targetFloor) {
-		return 0;
+	public static int chooseElevator(Elevator[] elevatorStatus, int targetFloor) {
+		return NearestElevatorSolution.chooseElevator(elevatorStatus, targetFloor);
 	}
 }
