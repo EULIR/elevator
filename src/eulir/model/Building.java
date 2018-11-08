@@ -7,23 +7,26 @@ public class Building {
 	private Elevator[] build;
 	private int floors;
 
+	public final static int GOINGUP = 0;
+	public final static int GOINGDOWN = 1;
+
 	public Building(int numOfElevators, int numOfFloors) {
 		build = new Elevator[numOfElevators];
 		floors = numOfFloors;
 		IntStream.range(0, numOfElevators).forEach(i -> build[i] = new Elevator(i, numOfFloors));
 	}
 
-	public void outsideRequest(int floorNum, int destination) {
+	public void outsideRequest(int floorNum, int[] destination, int direction) {
 		if (floorNum <= floors && floorNum >= 1)
-			request(floorNum, destination);
+			request(floorNum, destination, direction);
 		else
 			throw new IllegalArgumentException("floor not available");
 	}
 
-	private void request(int floorNum, int destination) {
+	private void request(int floorNum, int[] destination, int direction) {
 		int idOfElevator = Algorithm.chooseElevator(this.build, floorNum);
-		build[idOfElevator].setOutsideOrder(floorNum);
-		build[idOfElevator].setInsideOrder(destination);
+		build[idOfElevator].setOutsideOrder(floorNum, direction);
+		build[idOfElevator].setInsideOrder(destination, direction);
 	}
 
 	public int numOfElevator() {

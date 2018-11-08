@@ -1,6 +1,10 @@
 package eulir.model;
 
 import java.text.MessageFormat;
+import java.util.Arrays;
+
+import static eulir.model.Building.GOINGDOWN;
+import static eulir.model.Building.GOINGUP;
 
 public class Elevator {
 	private int ID;
@@ -48,13 +52,39 @@ public class Elevator {
 		}
 	}
 
-	public void setInsideOrder(int floor) {
+	public void setInsideOrder(int[] floor, int direction) {
 		occupied = OCCUPIED;
-		order(floor, INSIDE);
+		Arrays.sort(floor);
+		int index = floor.length;
+		for (int i = 0; i < floor.length; i++) {
+			if (floor[i] > currentFloor) {
+				index = i;
+				break;
+			}
+		}
+		int[] down = new int[index];
+		int[] up = new int[floor.length - index];
+		System.arraycopy(floor, 0, down, 0, index);
+		System.arraycopy(floor, index, up, 0, floor.length - index);
+		if (direction == GOINGUP) {
+			for (int i = 0; i < up.length; i++) {
+				order(up[i], INSIDE);
+			}
+			for (int i = down.length - 1; i >= 0; i--) {
+				order(down[i], INSIDE);
+			}
+		} else if (direction == GOINGDOWN) {
+			for (int i = down.length - 1; i >= 0; i--) {
+				order(down[i], INSIDE);
+			}
+			for (int i = 0; i < up.length; i++) {
+				order(up[i], INSIDE);
+			}
+		}
 		occupied = UNOCCUPIED;
 	}
 
-	public void setOutsideOrder(int floor) {
+	public void setOutsideOrder(int floor, int direction) {
 		occupied = OCCUPIED;
 		order(floor, OUTSIDE);
 		occupied = UNOCCUPIED;

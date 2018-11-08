@@ -2,6 +2,8 @@ package eulir.test;
 
 import eulir.model.Building;
 
+import static eulir.model.Building.GOINGUP;
+
 public class Test {
 	public static void main(String[] args) {
 		final int numOfElevator = 2;
@@ -13,7 +15,7 @@ public class Test {
 			System.out.println(current + " floor calls");
 			int target = (int) (Math.random() * numOfFloor) + 1;
 			System.out.println("to " + target + " floor");
-			apartmentA.outsideRequest(current, target);
+			//apartmentA.outsideRequest(current, target, GOINGUP);
 			apartmentA.log();
 		}
 	}
