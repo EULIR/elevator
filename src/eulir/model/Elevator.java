@@ -26,7 +26,7 @@ public class Elevator {
 	static int OUTSIDE = 0;
 
 	public Elevator(int ID, int numOfFloor) {
-		currentFloor = 1;
+		currentFloor = (int) (Math.random() * numOfFloor) + 1;
 		this.ID = ID;
 		direction = DIRECTION_STAY;
 		status = false;
