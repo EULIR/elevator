@@ -8,6 +8,7 @@ In this repo, several algorithms used to dispatch elevators is implemented and w
 - src/eulir/test
     Test codes.
 ## TODO
+ ||
  |:--:|
  |FCFS-First Come First Serve Algorithm|
  |SSTF-Shortest Seek Time First Algorithm|
