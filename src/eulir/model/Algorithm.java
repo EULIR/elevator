@@ -4,7 +4,7 @@ import eulir.algorithm.NearestElevatorSolution;
 import eulir.algorithm.RandomSolution;
 
 public class Algorithm {
-	private static int solution = 1;
+	private static int solution = 0;
 
 	private final static int NEAREST_ELEVATOR_SOLUTION = 0;
 	private final static int RANDOM_SOLUTION = 1;

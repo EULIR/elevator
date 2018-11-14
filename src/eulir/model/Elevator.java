@@ -37,16 +37,19 @@ public class Elevator {
 	private void order(int floor, int orderDirection) {
 		if (floor > currentFloor) {
 			System.out.println(MessageFormat.format("The elevator {0} has gone upstair from {1} floor to {2} floor by an {3}", this.ID, currentFloor, floor, orderDirection == 1 ? "inside call" : "outside call"));
+			System.out.println(MessageFormat.format("It takes elevator {0} {1}s to reach destination and it keeps door open for 15s and then closed\n", this.getID(), (floor - currentFloor) * 3));
 			direction = DIRECTION_UP;
 			status = false;
 			currentFloor = floor;
 		} else if (floor < currentFloor) {
 			System.out.println(MessageFormat.format("The elevator {0} has gone downstair from {1} floor to {2} floor by an {3}", this.ID, currentFloor, floor, orderDirection == 1 ? "inside call" : "outside call"));
+			System.out.println(MessageFormat.format("It takes elevator {0} {1}s to reach destination and it keeps door open for 15s and then closed\n", this.getID(), (currentFloor - floor) * 3));
 			direction = DIRECTION_DOWN;
 			status = false;
 			currentFloor = floor;
 		} else {
 			System.out.println(MessageFormat.format("The elevator {0} has been held at {1} floor by an {2}", this.ID, currentFloor, orderDirection == 1 ? "inside call" : "outside call"));
+			System.out.println(MessageFormat.format("The elevator {0} keeps its door open for 15s and then closed\n", this.ID));
 			direction = DIRECTION_STAY;
 			status = true;
 		}
